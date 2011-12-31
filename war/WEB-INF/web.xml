@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+              http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5" xmlns="http://java.sun.com/xml/ns/javaee">
+
+	<servlet>
+		<servlet-name>doesItMeanService</servlet-name>
+		<servlet-class>ziraja.server.service.DoesItMeanServiceImpl</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>persistenceService</servlet-name>
+		<servlet-class>ziraja.server.service.PersistenceServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>doesItMeanService</servlet-name>
+		<url-pattern>/ziraja/doesItMeanService</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>persistenceService</servlet-name>
+		<url-pattern>/ziraja/persistenceService</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>Ziraja.html</welcome-file>
+	</welcome-file-list>
+
+</web-app>

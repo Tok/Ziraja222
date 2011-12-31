@@ -1,0 +1,50 @@
+body {
+	color: black;
+	background: grey;
+}
+
+div#page {
+	color: black;
+	background: white;
+	width: 1024px;
+	margin: 0 auto;
+}
+
+.configStatusLabel {
+	margin-left: 5px;
+}
+
+.FlexTable {
+  text-align: center;
+  border-width: 3px 3px 3px 3px;
+  border-style: solid;
+  border-color: black;
+/*   padding: 5px; */
+}
+
+.FlexTable-Header {
+  border-width: 3px 3px 3px 3px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+}
+
+.FlexTable-Cell {
+  border-width: 1px 1px 1px 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 5px;
+}
+
+.black {
+	color: black;
+}
+
+.red {
+	color: red;
+}
+
+.answer {
+	font-size: xx-large;
+	font-weight: bold;
+}
