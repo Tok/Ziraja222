@@ -22,242 +22,235 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
 public class QuestionView extends Composite implements QuestionPresenter.Display {
-	private DoesItMeanServiceAsync doesItMeanService;
-	private final FlexTable contentTable = new FlexTable();
-	private final Label questionLabel = new Label("Please enter your Question:");
-	private final HorizontalPanel questionPanel = new HorizontalPanel();	
-	private final TextBox questionBox = new TextBox();
-	private final Button questionButton = new Button("Go");
-	private final HorizontalPanel commentPanel = new HorizontalPanel();
-	private final TextBox commentBox = new TextBox();
-	private final Button submitButton = new Button("Submit");
+    private DoesItMeanServiceAsync doesItMeanService;
+    private final FlexTable contentTable = new FlexTable();
+    private final Label questionLabel = new Label("Please enter your Question:");
+    private final HorizontalPanel questionPanel = new HorizontalPanel();
+    private final TextBox questionBox = new TextBox();
+    private final Button questionButton = new Button("Go");
+    private final HorizontalPanel commentPanel = new HorizontalPanel();
+    private final TextBox commentBox = new TextBox();
+    private final Button submitButton = new Button("Submit");
 
-	private FullQuestionGrid fullQuestionGrid;
-	private ReducedQuestionGrid reducedQuestionGrid;
-	private TotalValuesGrid totalValuesGrid;
-	private AnswerGrid answerGrid;
-	
-	private final Label originalQuestionLabel = new Label();
-	private final Label rawAnswerLabel = new Label();
-	private final Label answerLabel = new Label();
-	private final Label qualityLabel = new Label();
-	private final Anchor anagramsLink = new Anchor();
-	private final Label doesItMeanLabel = new Label();
-	private final Label statusLabel = new Label();
-	
-	public QuestionView(HandlerManager eventBus, final PersistenceServiceAsync persistenceService, final DoesItMeanServiceAsync doesItMeanService) {
-		this.doesItMeanService = doesItMeanService;
-		
-		fullQuestionGrid = new FullQuestionGrid(eventBus);
-		reducedQuestionGrid = new ReducedQuestionGrid(eventBus);
-		totalValuesGrid = new TotalValuesGrid(eventBus);
-		answerGrid = new AnswerGrid(eventBus);
-		
-		final DecoratorPanel contentTableDecorator = new DecoratorPanel();
-		contentTableDecorator.setWidth("100%");
-		contentTableDecorator.setWidth("1010px");
-		initWidget(contentTableDecorator);
-		
-		contentTable.setWidth("987px");
-		
-		int row = 0;
-		questionLabel.setWidth("200px");
-		contentTable.setWidget(row, 0, questionLabel);
-		
-		questionPanel.setSpacing(5);
-		questionBox.setWidth("670px");
-			questionPanel.add(questionBox);
-		questionButton.setWidth("80px");
-		questionButton.setTitle("Process Question");
-		questionPanel.add(questionButton);
-		contentTable.setWidget(row++, 1, questionPanel);
-		
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+    private FullQuestionGrid fullQuestionGrid;
+    private ReducedQuestionGrid reducedQuestionGrid;
+    private TotalValuesGrid totalValuesGrid;
+    private AnswerGrid answerGrid;
 
-		contentTable.setText(row, 0, "Full Question:");
-		contentTable.setWidget(row++, 1, fullQuestionGrid);
+    private final Label originalQuestionLabel = new Label();
+    private final Label rawAnswerLabel = new Label();
+    private final Label answerLabel = new Label();
+    private final Label qualityLabel = new Label();
+    private final Anchor anagramsLink = new Anchor();
+    private final Label doesItMeanLabel = new Label();
+    private final Label statusLabel = new Label();
 
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+    public QuestionView(final HandlerManager eventBus, final PersistenceServiceAsync persistenceService, final DoesItMeanServiceAsync doesItMeanService) {
+        this.doesItMeanService = doesItMeanService;
 
-		contentTable.setText(row, 0, "Reduced Question:");
-		contentTable.setWidget(row++, 1, reducedQuestionGrid);
-		
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+        fullQuestionGrid = new FullQuestionGrid(eventBus);
+        reducedQuestionGrid = new ReducedQuestionGrid(eventBus);
+        totalValuesGrid = new TotalValuesGrid(eventBus);
+        answerGrid = new AnswerGrid(eventBus);
 
-		contentTable.setText(row, 0, "Total Values:");
-		contentTable.setWidget(row++, 1, totalValuesGrid);
-		
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+        final DecoratorPanel contentTableDecorator = new DecoratorPanel();
+        contentTableDecorator.setWidth("100%");
+        contentTableDecorator.setWidth("1010px");
+        initWidget(contentTableDecorator);
 
-		contentTable.setText(row, 0, "Answer Grid:");
-		contentTable.setWidget(row++, 1, answerGrid);
-		
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+        contentTable.setWidth("987px");
 
-		contentTable.setText(row, 0, "Original Question:");
-		contentTable.setWidget(row++, 1, originalQuestionLabel); 
+        int row = 0;
+        questionLabel.setWidth("200px");
+        contentTable.setWidget(row, 0, questionLabel);
 
-		contentTable.setText(row, 0, "Raw Answer:");
-		contentTable.setWidget(row++, 1, rawAnswerLabel); 
+        questionPanel.setSpacing(5);
+        questionBox.setWidth("670px");
+        questionPanel.add(questionBox);
+        questionButton.setWidth("80px");
+        questionButton.setTitle("Process Question");
+        questionPanel.add(questionButton);
+        contentTable.setWidget(row++, 1, questionPanel);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-		contentTable.setText(row, 0, "Answer:");
-		answerLabel.setStyleName("answer");
-		contentTable.setWidget(row++, 1, answerLabel); 
-		
-		contentTable.setText(row, 0, "Answer Quality:");
-		contentTable.setWidget(row++, 1, qualityLabel); 
-		
-		contentTable.setText(row, 0, "Anagrams:");
-		contentTable.setWidget(row++, 1, anagramsLink); 
+        contentTable.setText(row, 0, "Full Question:");
+        contentTable.setWidget(row++, 1, fullQuestionGrid);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-		contentTable.setText(row, 0, "Does it mean:");
-		contentTable.setWidget(row++, 1, doesItMeanLabel);
+        contentTable.setText(row, 0, "Reduced Question:");
+        contentTable.setWidget(row++, 1, reducedQuestionGrid);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
-		
-		contentTable.setText(row, 0, "Comment and Submit Report:");
-		commentPanel.setSpacing(5);
-		commentBox.setWidth("670px");
-		commentPanel.add(commentBox);
-		submitButton.setWidth("80px");
-		submitButton.setTitle("Submit Report to Server");
-		commentPanel.add(submitButton);
-		contentTable.setWidget(row++, 1, commentPanel);
-		
-		contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
+        contentTable.setText(row, 0, "Total Values:");
+        contentTable.setWidget(row++, 1, totalValuesGrid);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-		contentTable.setText(row, 0, "Status:");
-		contentTable.setWidget(row++, 1, statusLabel);
-		
-		contentTableDecorator.add(contentTable);
-		
-	}
+        contentTable.setText(row, 0, "Answer Grid:");
+        contentTable.setWidget(row++, 1, answerGrid);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-	public void setQuestion(String token) {
-		questionBox.setText(token);
-		questionBox.selectAll();
-		originalQuestionLabel.setText(token);
-	}
+        contentTable.setText(row, 0, "Original Question:");
+        contentTable.setWidget(row++, 1, originalQuestionLabel);
 
-	public void resetFocus() {
-		questionBox.selectAll();
-		questionBox.setFocus(true);		
-	}
-	
-	@Override
-	public Widget asWidget() {
-		return this;
-	}
+        contentTable.setText(row, 0, "Raw Answer:");
+        contentTable.setWidget(row++, 1, rawAnswerLabel);
 
-	@Override
-	public TextBox getQuestionTextBox() {
-		return questionBox;
-	}
-	
-	@Override
-	public Button getQuestionButton() {
-		return questionButton;
-	}
+        contentTable.setText(row, 0, "Answer:");
+        answerLabel.setStyleName("answer");
+        contentTable.setWidget(row++, 1, answerLabel);
 
-	@Override
-	public FullQuestionGrid getFullQuestionGrid() {
-		return fullQuestionGrid;
-	}
+        contentTable.setText(row, 0, "Answer Quality:");
+        contentTable.setWidget(row++, 1, qualityLabel);
 
-	@Override
-	public ReducedQuestionGrid getReducedQuestionGrid() {
-		return reducedQuestionGrid;
-	}
+        contentTable.setText(row, 0, "Anagrams:");
+        contentTable.setWidget(row++, 1, anagramsLink);
 
-	@Override
-	public TotalValuesGrid getTotalValuesGrid() {
-		return totalValuesGrid;
-	}	
-	
-	@Override
-	public AnswerGrid getAnswerGrid() {
-		return answerGrid;
-	}
-	
-	@Override
-	public TextBox getCommentTextBox() {
-		return commentBox;
-	}
-	
-	@Override
-	public Button getSubmitButton() {
-		return submitButton;
-	}
-	
-	public void doUpdateLetter() {
-		reducedQuestionGrid.setLetterValues(fullQuestionGrid.getLetterValues());
-	}
+        contentTable.setText(row, 0, "Does it mean:");
+        contentTable.setWidget(row++, 1, doesItMeanLabel);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-	public void doUpdateTotal() {
-		totalValuesGrid.setTotalValues(reducedQuestionGrid.getTotalValues());
-	}
+        contentTable.setText(row, 0, "Comment and Submit Report:");
+        commentPanel.setSpacing(5);
+        commentBox.setWidth("670px");
+        commentPanel.add(commentBox);
+        submitButton.setWidth("80px");
+        submitButton.setTitle("Submit Report to Server");
+        commentPanel.add(submitButton);
+        contentTable.setWidget(row++, 1, commentPanel);
+        contentTable.setWidget(row++, 0, new HTML("&nbsp;"));
 
-	public void doUpdateAnswer() {
-		String answer = reducedQuestionGrid.toString();
-		answerGrid.setAnswerValues(answer, reducedQuestionGrid.getTotalValues());
-		rawAnswerLabel.setText(answerGrid.getAnswer());
-	}
+        contentTable.setText(row, 0, "Status:");
+        contentTable.setWidget(row++, 1, statusLabel);
 
-	public void doAnswerEvaluation() {
-		String answer = answerGrid.getAnswer();
-		answerLabel.setText(answer);
-		String href = "http://wordsmith.org/anagram/anagram.cgi?anagram=" + answer;
-		if (!answer.equals("")) {
-			anagramsLink.setHref(href);
-			anagramsLink.setText(href);
-		} else {
-			anagramsLink.setHref("");
-			anagramsLink.setText("");			
-		}
-		int quality = answerGrid.getAnswerQuality();
-		qualityLabel.setText(String.valueOf(quality));
-		
-		doesItMeanService.doesItMean(answer, new AsyncCallback<String>() {
-			@Override
-			public void onSuccess(String result) {
-				doesItMeanLabel.setText(result);
-			}
-			@Override
-			public void onFailure(Throwable caught) {
-				doesItMeanLabel.setText("...");				
-			}
-		});
-		statusLabel.setText("");
-	}
+        contentTableDecorator.add(contentTable);
+    }
 
-	@Override
-	public Label getOriginalQuestionLabel() {
-		return originalQuestionLabel;
-	}
+    public final void setQuestion(final String token) {
+        questionBox.setText(token);
+        questionBox.selectAll();
+        originalQuestionLabel.setText(token);
+    }
 
-	@Override
-	public Label getRawAnswerLabel() {
-		return rawAnswerLabel;
-	}
+    public final void resetFocus() {
+        questionBox.selectAll();
+        questionBox.setFocus(true);
+    }
 
-	@Override
-	public Label getAnswerLabel() {
-		return answerLabel;
-	}
+    @Override
+    public final Widget asWidget() {
+        return this;
+    }
 
-	@Override
-	public Label getDoesItMeanLabel() {
-		return doesItMeanLabel;
-	}
+    @Override
+    public final TextBox getQuestionTextBox() {
+        return questionBox;
+    }
 
-	@Override
-	public Label getStatusLabel() {
-		return statusLabel;
-	}
+    @Override
+    public final Button getQuestionButton() {
+        return questionButton;
+    }
 
-	@Override
-	public Label getQualityLabel() {
-		return qualityLabel;
-	}
+    @Override
+    public final FullQuestionGrid getFullQuestionGrid() {
+        return fullQuestionGrid;
+    }
+
+    @Override
+    public final ReducedQuestionGrid getReducedQuestionGrid() {
+        return reducedQuestionGrid;
+    }
+
+    @Override
+    public final TotalValuesGrid getTotalValuesGrid() {
+        return totalValuesGrid;
+    }
+
+    @Override
+    public final AnswerGrid getAnswerGrid() {
+        return answerGrid;
+    }
+
+    @Override
+    public final TextBox getCommentTextBox() {
+        return commentBox;
+    }
+
+    @Override
+    public final Button getSubmitButton() {
+        return submitButton;
+    }
+
+    public final void doUpdateLetter() {
+        reducedQuestionGrid.setLetterValues(fullQuestionGrid.getLetterValues());
+    }
+
+    public final void doUpdateTotal() {
+        totalValuesGrid.setTotalValues(reducedQuestionGrid.getTotalValues());
+    }
+
+    public final void doUpdateAnswer() {
+        String answer = reducedQuestionGrid.toString();
+        answerGrid.setAnswerValues(answer, reducedQuestionGrid.getTotalValues());
+        rawAnswerLabel.setText(answerGrid.getAnswer());
+    }
+
+    public final void doAnswerEvaluation() {
+        String answer = answerGrid.getAnswer();
+        answerLabel.setText(answer);
+        String href = "http://wordsmith.org/anagram/anagram.cgi?anagram=" + answer;
+        if (!answer.equals("")) {
+            anagramsLink.setHref(href);
+            anagramsLink.setText(href);
+        } else {
+            anagramsLink.setHref("");
+            anagramsLink.setText("");
+        }
+        int quality = answerGrid.getAnswerQuality();
+        qualityLabel.setText(String.valueOf(quality));
+
+        doesItMeanService.doesItMean(answer, new AsyncCallback<String>() {
+            @Override
+            public void onSuccess(final String result) {
+                doesItMeanLabel.setText(result);
+            }
+
+            @Override
+            public void onFailure(final Throwable caught) {
+                doesItMeanLabel.setText("...");
+            }
+        });
+        statusLabel.setText("");
+    }
+
+    @Override
+    public final Label getOriginalQuestionLabel() {
+        return originalQuestionLabel;
+    }
+
+    @Override
+    public final Label getRawAnswerLabel() {
+        return rawAnswerLabel;
+    }
+
+    @Override
+    public final Label getAnswerLabel() {
+        return answerLabel;
+    }
+
+    @Override
+    public final Label getDoesItMeanLabel() {
+        return doesItMeanLabel;
+    }
+
+    @Override
+    public final Label getStatusLabel() {
+        return statusLabel;
+    }
+
+    @Override
+    public final Label getQualityLabel() {
+        return qualityLabel;
+    }
 
 }

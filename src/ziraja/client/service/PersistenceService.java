@@ -9,7 +9,7 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("persistenceService")
 public interface PersistenceService extends RemoteService {
-	void saveReport(Report report);
-	ArrayList<Report> getReports();
-	void deleteReport(final Report report);
+    void saveReport(Report report);
+    ArrayList<Report> getReports();
+    void deleteReport(final Report report);
 }

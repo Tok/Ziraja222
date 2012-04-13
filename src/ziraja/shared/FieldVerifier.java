@@ -1,18 +1,21 @@
 package ziraja.shared;
 
-public class FieldVerifier {
+public final class FieldVerifier {
+    private static final int MAX_QUESTION_LENGTH = 7;
 
-	public static String validateQuestion(String question) {
-		if (question == null || question.equals("")) {
-			return "No question asked.";
-		}
-		if (question.length() <= 7) {
-			return "Question must have at least 7 letters.";
-		}
-		if (!question.endsWith("?")) {
-			return "Question must end with a question-mark.";
-		}		
-		return "";
-	}
+    private FieldVerifier() {
+    }
 
+    public static String validateQuestion(final String question) {
+        if (question == null || question.equals("")) {
+            return "No question asked.";
+        }
+        if (question.length() <= MAX_QUESTION_LENGTH) {
+            return "Question must have at least 7 letters.";
+        }
+        if (!question.endsWith("?")) {
+            return "Question must end with a question-mark.";
+        }
+        return "";
+    }
 }

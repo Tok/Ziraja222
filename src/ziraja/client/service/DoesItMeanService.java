@@ -5,5 +5,5 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
 @RemoteServiceRelativePath("doesItMeanService")
 public interface DoesItMeanService extends RemoteService {
-  String doesItMean(String input);
+    String doesItMean(String input);
 }

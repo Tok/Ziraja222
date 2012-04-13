@@ -2,16 +2,16 @@ package ziraja.client.event;
 
 import com.google.gwt.event.shared.GwtEvent;
 
-public class UpdateTotalEvent extends GwtEvent<UpdateTotalEventHandler>{
-  public static Type<UpdateTotalEventHandler> TYPE = new Type<UpdateTotalEventHandler>();
+public class UpdateTotalEvent extends GwtEvent<UpdateTotalEventHandler> {
+    public static final Type<UpdateTotalEventHandler> TYPE = new Type<UpdateTotalEventHandler>();
 
-  @Override
-  public Type<UpdateTotalEventHandler> getAssociatedType() {
-    return TYPE;
-  }
+    @Override
+    public final Type<UpdateTotalEventHandler> getAssociatedType() {
+        return TYPE;
+    }
 
-  @Override
-  protected void dispatch(final UpdateTotalEventHandler handler) {
-    handler.onUpdated(this);
-  }
+    @Override
+    protected final void dispatch(final UpdateTotalEventHandler handler) {
+        handler.onUpdated(this);
+    }
 }
