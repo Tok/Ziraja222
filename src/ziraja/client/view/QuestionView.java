@@ -68,6 +68,7 @@ public class QuestionView extends Composite implements QuestionPresenter.Display
 		questionBox.setWidth("670px");
 			questionPanel.add(questionBox);
 		questionButton.setWidth("80px");
+		questionButton.setTitle("Process Question");
 		questionPanel.add(questionButton);
 		contentTable.setWidget(row++, 1, questionPanel);
 		
@@ -119,6 +120,7 @@ public class QuestionView extends Composite implements QuestionPresenter.Display
 		commentBox.setWidth("670px");
 		commentPanel.add(commentBox);
 		submitButton.setWidth("80px");
+		submitButton.setTitle("Submit Report to Server");
 		commentPanel.add(submitButton);
 		contentTable.setWidget(row++, 1, commentPanel);
 		

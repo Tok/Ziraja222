@@ -20,22 +20,15 @@ div#page {
 
 .FlexTable {
   text-align: center;
-  border-width: 3px 3px 3px 3px;
+  border-width: 1px 1px 1px 1px;
   border-style: solid;
   border-color: black;
 /*   padding: 5px; */
 }
 
-.FlexTable-Header {
-  border-width: 3px 3px 3px 3px;
-  border-style: solid;
-  border-color: black;
-  padding: 5px;
-}
-
 .FlexTable-Cell {
   border-width: 1px 1px 1px 1px;
-  border-style: solid;
+  border-style: dotted;
   border-color: black;
   padding: 5px;
 }
@@ -49,6 +42,7 @@ div#page {
 }
 
 .answer {
+	height: 35px;
 	font-size: xx-large;
 	font-weight: bold;
 }

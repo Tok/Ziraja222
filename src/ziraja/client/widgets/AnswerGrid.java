@@ -32,6 +32,9 @@ public class AnswerGrid extends AbstractQuestionGrid {
 	
 	public AnswerGrid(HandlerManager eventBus) {
 		super(eventBus);
+        resetButton.setTitle("Reset order and selections to restore original quality rating.");
+        blankOutButton.setTitle("Set all selections to blank.");
+        rearrangeButton.setTitle("Randomly rearrange grid (will affect quality rating).");
 		bind();
 	}
 	
