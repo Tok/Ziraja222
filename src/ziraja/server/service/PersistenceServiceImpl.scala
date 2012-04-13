@@ -27,7 +27,7 @@ class PersistenceServiceImpl extends RemoteServiceServlet with PersistenceServic
     val PM = PMF.getPersistenceManager()
     val extent = PM.getExtent(classOf[Report], false) //Extent<Report> 
     var count = 0
-    for (val existingReport <- extent.iterator()) { //Report
+    for (existingReport <- extent.iterator()) { //Report
       count += 1
       if (count >= MAX_COUNT) {
         PM.deletePersistent(existingReport)
