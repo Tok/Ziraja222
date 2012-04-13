@@ -19,7 +19,7 @@ public class Ziraja implements EntryPoint {
 	private final AppController appViewer = new AppController(eventBus);
 	
 	public void onModuleLoad() {
-		Image titleImage = new Image("/images/Title.png");
+		Image titleImage = new Image("/images/ZirajaTitle.png");
 		titleImage.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
