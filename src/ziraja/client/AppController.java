@@ -79,7 +79,7 @@ public class AppController implements Presenter, ValueChangeHandler<String> {
                 }
             }
         });
-        tabPanel.setAnimationEnabled(true);
+        //tabPanel.setAnimationEnabled(true); //may cause problems in chrome.
         tabPanel.add(mainView.asWidget(), "Main");
         tabPanel.add(questionView.asWidget(), "Question");
         tabPanel.add(reportsView.asWidget(), "Reports");

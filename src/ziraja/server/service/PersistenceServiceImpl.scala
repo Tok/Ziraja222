@@ -11,7 +11,7 @@ import ziraja.shared.data.Report
 
 class PersistenceServiceImpl extends RemoteServiceServlet with PersistenceService {
   val PMF = JDOHelper.getPersistenceManagerFactory("transactions-optional")
-  var MAX_COUNT = 222;
+  var MAX_COUNT = 222
   
   //wrapper to make java collections iterable for scala
   implicit def iteratorToWrapper[T](iter: java.util.Iterator[T]): IteratorWrapper[T] = new IteratorWrapper[T](iter)
@@ -59,7 +59,7 @@ class PersistenceServiceImpl extends RemoteServiceServlet with PersistenceServic
     try {
       PM.deletePersistent(PM.getObjectById(classOf[Report], report.getId()))
     } finally {
-      PM.close();
+      PM.close()
     }
   }
 
