@@ -16,7 +16,7 @@ class DoesItMeanServiceImpl extends RemoteServiceServlet with DoesItMeanService 
   override def doesItMean(input: String): String = {
     try {
       val src = io.Source.fromURL("http://www.google.com/search?lang=en&hl=en&q=" + input).mkString
-      if (src != null && src.contains(indent)) src.split(indent)(1).split("<i>")(1).split("</i>")(0) else "???"
+      if (src != null && src.contains(indent)) ((src.split(indent)(1)).split("<i>")(1)).split("</i>")(0) else "???"
     } catch {
       case murle: MalformedURLException => "FAIL: URL malformed."
       case ioe: IOException => "??"
